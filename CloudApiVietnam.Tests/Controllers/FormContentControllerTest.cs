@@ -154,6 +154,7 @@ namespace CloudApiVietnam.Tests.Controllers
             var resultContent = result.Content.ReadAsAsync<dynamic>().Result;
             // Assert
             Assert.AreEqual(result.StatusCode, HttpStatusCode.OK);
+            Console.WriteLine(result.StatusCode);
             Assert.IsNotNull(resultContent);
 
         }

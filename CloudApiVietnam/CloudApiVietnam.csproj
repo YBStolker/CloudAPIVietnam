@@ -313,6 +313,18 @@
     <Compile Include="Migrations\201811061910549_IgnoreCliamsAndLogins.Designer.cs">
       <DependentUpon>201811061910549_IgnoreCliamsAndLogins.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811271830294_testMigrationVoorOpdracht.cs" />
+    <Compile Include="Migrations\201811271830294_testMigrationVoorOpdracht.Designer.cs">
+      <DependentUpon>201811271830294_testMigrationVoorOpdracht.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811271857471_testMigrationVoorOpdracht2.cs" />
+    <Compile Include="Migrations\201811271857471_testMigrationVoorOpdracht2.Designer.cs">
+      <DependentUpon>201811271857471_testMigrationVoorOpdracht2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811271858106_testMigrationVoorOpdracht3.cs" />
+    <Compile Include="Migrations\201811271858106_testMigrationVoorOpdracht3.Designer.cs">
+      <DependentUpon>201811271858106_testMigrationVoorOpdracht3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -386,6 +398,7 @@
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
     <None Include="Properties\PublishProfiles\CloudApiVietnam - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\CloudAPIYannick - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -490,6 +503,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811061910549_IgnoreCliamsAndLogins.resx">
       <DependentUpon>201811061910549_IgnoreCliamsAndLogins.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811271830294_testMigrationVoorOpdracht.resx">
+      <DependentUpon>201811271830294_testMigrationVoorOpdracht.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811271857471_testMigrationVoorOpdracht2.resx">
+      <DependentUpon>201811271857471_testMigrationVoorOpdracht2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811271858106_testMigrationVoorOpdracht3.resx">
+      <DependentUpon>201811271858106_testMigrationVoorOpdracht3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

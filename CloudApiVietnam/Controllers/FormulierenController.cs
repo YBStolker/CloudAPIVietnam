@@ -17,6 +17,7 @@ namespace CloudApiVietnam.Controllers
         ApplicationDbContext db = new ApplicationDbContext();
 
         // GET alle Formulieren
+        [AllowAnonymous]
         public HttpResponseMessage Get()
         {
             try
@@ -44,6 +45,22 @@ namespace CloudApiVietnam.Controllers
             }
         }
 
+        //returns the Formulieren greater than the value given
+        [Route("api/Formulieren/filter/{value}")]
+        [AllowAnonymous]
+        public HttpResponseMessage GetFiltered(int value)
+        {
+            List<Formulieren> formulieren = db.Formulieren.Include("FormContent").Where(f => f.Test > value).ToList();
+            if (formulieren.Count > 0)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, formulieren);
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "RIP " + value);
+            }
+        }
+
 
         // POST een Formulier
         public HttpResponseMessage Post(FormulierenBindingModel formulierenBindingModel)
@@ -56,10 +73,13 @@ namespace CloudApiVietnam.Controllers
                     return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "JSON in 'content' is not correct JSON: " + isJson.Error);
                 }
 
-                Formulieren formulier = new Formulieren();
-                formulier.Name = formulierenBindingModel.Name;
-                formulier.Region = formulierenBindingModel.Region;
-                formulier.FormTemplate = formulierenBindingModel.FormTemplate;
+                Formulieren formulier = new Formulieren()
+                {
+                    Name = formulierenBindingModel.Name,
+                    Region = formulierenBindingModel.Region,
+                    Test = formulierenBindingModel.Test,
+                    FormTemplate = formulierenBindingModel.FormTemplate
+                };
 
                 db.Formulieren.Add(formulier);
                 db.SaveChanges();
@@ -92,6 +112,7 @@ namespace CloudApiVietnam.Controllers
                 form.Name = UpdateObject.Name;
                 form.Region = UpdateObject.Region;
                 form.FormTemplate = UpdateObject.FormTemplate;
+                form.Test = UpdateObject.Test;
 
                 var formContentList = db.FormContent.Where(s => s.FormulierenId == id).ToList(); //get all the formContents related to the form
 

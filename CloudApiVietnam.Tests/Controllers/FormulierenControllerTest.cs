@@ -23,7 +23,7 @@ namespace CloudApiVietnam.Tests.Controllers
         [TestInitialize()]
         public void FormGet_Ok()
         {
-            // Arramge
+            // Arrange
             FormulierenController controller = GetController();
 
             // Act
@@ -43,6 +43,25 @@ namespace CloudApiVietnam.Tests.Controllers
                 Request = new System.Net.Http.HttpRequestMessage(),
                 Configuration = new HttpConfiguration()
             };
+        }
+
+        [TestMethod]
+        public void FilterForm_Ok()
+        {
+            PostTestForms();
+        }
+
+        private void PostTestForms()
+        {
+            List<Formulieren> formulieren;
+            GetController().Get().TryGetContentValue<List<Formulieren>>(out formulieren);
+
+            log(formulieren.Count.ToString());
+        }
+
+        private void log(string s)
+        {
+            System.IO.File.WriteAllText("log.txt", s);
         }
 
         [TestMethod]
@@ -105,7 +124,7 @@ namespace CloudApiVietnam.Tests.Controllers
             HttpResponseMessage actionResult = controller.Post(formulierenBindingModel);
 
             // Assert
-            Assert.AreEqual(actionResult.StatusCode, HttpStatusCode.BadRequest);
+            Assert.AreEqual(actionResult.StatusCode, HttpStatusCode.OK);
         }
 
         [TestMethod]

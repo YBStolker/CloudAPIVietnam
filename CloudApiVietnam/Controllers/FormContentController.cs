@@ -184,7 +184,7 @@ namespace CloudApiVietnam.Controllers
         private ContentEqeulsHeadersCheck ContentEqeulsHeaders(FormContentBindingModel formContentBindingModel)
         {
             ContentEqeulsHeadersCheck result = new ContentEqeulsHeadersCheck();
-            var Formulier = db.Formulieren.Where(f => f.Id == formContentBindingModel.FormId).FirstOrDefault(); //Haalt bijbehorende formulier op
+            Formulieren Formulier = db.Formulieren.Where(f => f.Id == formContentBindingModel.FormId).FirstOrDefault(); //Haalt bijbehorende formulier op
 
             var obj = JToken.Parse(formContentBindingModel.Content); //Maak object van mee gegeven content
 
